@@ -1,0 +1,89 @@
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <conio.h>
+ 
+using namespace std;
+ 
+struct School
+{
+    int no; //номер
+    string name; //название
+    string special; //специализация
+    int total; //кол-во учеников
+};
+ 
+void edit(int n, struct School* p)
+{
+ 
+    int i;
+    cout << "n input N string for edit: ";
+    cin >> i;
+    cout << "no: ";
+    cin >> p[i].no;
+    cout << "name: ";
+    cin >> p[i].name;
+    cout << "special: ";
+    cin >> p[i].special;
+    cout << "total: ";
+    cin >> p[i].total;
+}
+ 
+void input(int n, struct School* p)
+{
+    ifstream fin;
+    fin.open("f1.txt");
+    for (int i = 0; i < n; i++) {
+        fin >> p[i].no >> p[i].name >> p[i].special >> p[i].total;
+    }
+    fin.close();
+}
+ 
+void output(int n, struct School* p)
+{
+    cout << "Data output :" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << p[i].no << p[i].name << p[i].special << p[i].total << endl;
+    }
+}
+void output_file(int n, struct School* p)
+{
+    ofstream fout;
+    fout.open("f2.txt");
+    for (int i = 0; i < n; i++) {
+        fout << p[i].no << " " << p[i].name << " " << p[i].special << " " << p[i].total << endl;
+    }
+    fout.close();
+}
+ 
+int calc(int n, struct School* p)
+{
+    int k = 0;
+    for (int i = 0; i < n; i++)
+    {
+        k += p[i].total;
+    }
+    return k;
+}
+ 
+int main()
+ 
+{
+    setlocale(LC_ALL, "rus");
+    int n;
+    cout << "n= ";
+    cin >> n;
+ 
+    School* school = new School[n];
+    input(n, school);
+     edit(n, school);
+    output(n, school);
+ 
+    output_file(n, school);
+    calc(n, school);
+    delete[] school;
+ 
+    school = NULL;
+ 
+    return 0;
+}
