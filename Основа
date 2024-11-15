@@ -38,7 +38,7 @@ void edit(int n, struct Medicine* p)
 void input(int n, struct School* p)
 {
     ifstream fin;
-    fin.open("f1.txt");
+    fin.open("Медицина.txt");
     for (int i = 0; i < n; i++) {
         fin >> p[i].no >> p[i].name >> p[i].gldoc >> p[i].coldoc >> p[i].decr >> p[i].money;
     }
