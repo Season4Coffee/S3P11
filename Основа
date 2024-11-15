@@ -9,8 +9,10 @@ struct Medicine
 {
     int no; //номер
     string name; //название
+    string gldoc; //Глав.врач
     string coldoc; //кол-во врачей
     int decr; //кол-во в отпуске
+    int money; //отпускные
 };
  
 void edit(int n, struct Medicine* p)
@@ -21,12 +23,16 @@ void edit(int n, struct Medicine* p)
     cin >> i;
     cout << "no: ";
     cin >> p[i].no;
-    cout << "name: ";
+    cout << "name: "; 
     cin >> p[i].name;
+    cout << "gldoc: ";
+    cin >> p[i].gldoc;
     cout << "coldoc: ";
     cin >> p[i].coldoc;
     cout << "decr: ";
     cin >> p[i].decr;
+    cout << "money: ";
+    cin >> p[i].money;
 }
  
 void input(int n, struct School* p)
@@ -34,7 +40,7 @@ void input(int n, struct School* p)
     ifstream fin;
     fin.open("f1.txt");
     for (int i = 0; i < n; i++) {
-        fin >> p[i].no >> p[i].name >> p[i].coldoc >> p[i].decr;
+        fin >> p[i].no >> p[i].name >> p[i].gldoc >> p[i].coldoc >> p[i].decr >> p[i].money;
     }
     fin.close();
 }
@@ -43,7 +49,7 @@ void output(int n, struct School* p)
 {
     cout << "Data output :" << endl;
     for (int i = 0; i < n; i++) {
-        cout << p[i].no << p[i].name << p[i].coldoc << p[i].decr << endl;
+        cout << p[i].no << p[i].name << p[i].gldoc << p[i].coldoc << p[i].decr << p[i].money << endl;
     }
 }
 void output_file(int n, struct School* p)
@@ -51,7 +57,7 @@ void output_file(int n, struct School* p)
     ofstream fout;
     fout.open("f2.txt");
     for (int i = 0; i < n; i++) {
-        fout << p[i].no << " " << p[i].name << " " << p[i].special << " " << p[i].total << endl;
+        fout << p[i].no << " " << p[i].name << " " << p[i].gldoc << " " << p[i].coldoc <<" "<< p[i].decr << " " << p[i].money << endl;
     }
     fout.close();
 }
